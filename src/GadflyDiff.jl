@@ -17,6 +17,16 @@ function writemime(io::IO, m::MIME"text/html", ctx::Signal{Gadfly.Plot})
         ), c), ctx))
 end
 
-IJulia.metadata(::Reactive.Signal{Plot}) = Dict()
+using Requires
+
+@require IJulia begin
+    IJulia.metadata(::Reactive.Signal{Plot}) = Dict()
+end
+
+function __init__()
+    for f in Requires.__inits__
+        f()
+    end
+end
 
 end # module
