@@ -6,7 +6,6 @@ using Compose
 using Gadfly
 
 import Base: writemime
-import IJulia
 
 
 function writemime(io::IO, m::MIME"text/html", ctx::Signal{Gadfly.Plot})
